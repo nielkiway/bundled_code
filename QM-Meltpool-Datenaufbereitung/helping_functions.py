@@ -315,22 +315,27 @@ inputs:
 array - (np.ndarray) - array of a grid region
 grid_size - (int) - size of the grid in Bit 
 kernel_size - (int) - size of the kernel for dilation operation 
-max_int - (int) 
+intensity_limit - (int) - high limit of the intensity values 
+area_limit - (int) - high limit of the area values
+int_area_switch - (boolean) - 0 if area is selected; 1 if intensity is selected  
 
 returns:
-
+dilated_array (np.ndarray) - normalized and dilated array 
 
 '''
 
 
-def process_data_to_picturelike_structure(array, grid_size, kernel_size, intensity_limit):
+def process_data_to_picturelike_structure(array, grid_size, kernel_size, intensity_limit, area_limit, int_area_switch):
     # creating a picture grid with only zeros as a base for data filling
     picturelike_grid = np.zeros((grid_size, grid_size), dtype=np.uint8)
 
     # filling in the points from final grid, row[3]
     # the *255/intensity_limit product scales the values with respect to the intensity limit
     for row in array:
-        picturelike_grid[row[0], row[1]] = int(row[3] * 255 / intensity_limit)
+        if int_area_switch:
+            picturelike_grid[row[0], row[1]] = int(row[3] * 255 / intensity_limit)
+        else:
+            picturelike_grid[row[0], row[1]] = int(row[2] * 255 / area_limit)
 
     dilated_array = ndimage.grey_dilation(picturelike_grid, size=(kernel_size, kernel_size))
 

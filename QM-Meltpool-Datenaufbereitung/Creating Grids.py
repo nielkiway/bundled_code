@@ -16,10 +16,17 @@ intensity_limit = 1750
 kernel_size = 5
 n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
 Multilayer = False  # needs to be switched to True if the surrounding layers should be added
+int_area_switch = 0   # 0 if area is selected; 1 if intensity is selected
+
+if int_area_switch == 0:
+    mode = "area"
+elif int_area_switch == 1:
+    mode = "int"
+
 
 for ZP_number in range(1,10):
     # general calculations
-    h5_path = '/home/jan/Documents/Trainingsdaten/ZPs/ZP{}/ZP_{}_full_part.h5'.format(ZP_number, ZP_number)
+    h5_path = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/ZPs/ZP{}/ZP_{}_full_part.h5'.format(ZP_number, ZP_number)
     part_name = 'ZP{}_combined'.format(ZP_number)
     max_slice = slice_numbers.at[ZP_number-1, 'maxSlice']
     min_slice = slice_numbers.at[ZP_number-1, 'minSlice']
@@ -33,7 +40,7 @@ for ZP_number in range(1,10):
     max_square = int(0.85*length_x_part)
 
     y_max = max_square-min_square
-    grid_size = int(y_max/4)
+    grid_size = int(y_max/4)  # according to n_grid_x
     print('grid_size = ' + str(grid_size))
     print('preprocesses successfully finished')
 
@@ -51,12 +58,14 @@ for ZP_number in range(1,10):
             array_filtered_not_docked_below = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
                                                                                               slice_name_below,
                                                                                               intensity_limit,
+                                                                                              area_limit,
                                                                                               show_info=False)
             array_filtered_docked_below = dock_array_to_zero(array_filtered_not_docked_below, minX, minY)
 
             array_filtered_not_docked_above = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
                                                                                               slice_name_above,
                                                                                               intensity_limit,
+                                                                                              area_limit,
                                                                                               show_info=False)
             array_filtered_docked_above = dock_array_to_zero(array_filtered_not_docked_above, minX, minY)
 
@@ -106,13 +115,13 @@ for ZP_number in range(1,10):
             for cur_n_grid_x in range(n_grid_x):
                 for cur_n_grid_y in range(n_grid_y):
                     final_array = create_single_grid_array(cur_n_grid_x, cur_n_grid_y, grid_size, square_filtered, y_max)
-                    final_grid = process_data_to_picturelike_structure(final_array, grid_size, kernel_size, intensity_limit)
+                    final_grid = process_data_to_picturelike_structure(final_array, grid_size, kernel_size, intensity_limit, area_limit, int_area_switch)
 
                     final_array_below = create_single_grid_array(cur_n_grid_x, cur_n_grid_y, grid_size, square_filtered_below, y_max)
-                    final_grid_below = process_data_to_picturelike_structure(final_array_below, grid_size, kernel_size, intensity_limit)
+                    final_grid_below = process_data_to_picturelike_structure(final_array_below, grid_size, kernel_size, intensity_limit, area_limit, int_area_switch)
 
                     final_array_above = create_single_grid_array(cur_n_grid_x, cur_n_grid_y, grid_size, square_filtered_above, y_max)
-                    final_grid_above = process_data_to_picturelike_structure(final_array_above, grid_size, kernel_size, intensity_limit)
+                    final_grid_above = process_data_to_picturelike_structure(final_array_above, grid_size, kernel_size, intensity_limit, area_limit, int_area_switch)
 
                     three_layer_data = np.zeros((grid_size, grid_size, 3), dtype=np.uint8)
 
@@ -121,9 +130,9 @@ for ZP_number in range(1,10):
                             three_layer_data[i][j][0] = final_grid_below[i][j]
                             three_layer_data[i][j][1] = final_grid[i][j]
                             three_layer_data[i][j][2] = final_grid_above[i][j]
-                    np.save('/home/jan/Desktop/TryOut/ZP{}_{}_x:{}_y:{}'.format(ZP_number,slice_name, cur_n_grid_x, cur_n_grid_y),three_layer_data)
+                    np.save('/home/jan/Desktop/TryOut/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number,slice_name, cur_n_grid_x, cur_n_grid_y),three_layer_data)
                     img = Image.fromarray(three_layer_data)
-                    img.save('/home/jan/Desktop/TryOut/imgs/ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y) + '.png')
+                    img.save('/home/jan/Desktop/TryOut/imgs/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y) + '.png')
 
         else:
             for cur_n_grid_x in range(n_grid_x):
@@ -131,13 +140,13 @@ for ZP_number in range(1,10):
                     final_array = create_single_grid_array(cur_n_grid_x, cur_n_grid_y, grid_size, square_filtered,
                                                            y_max)
                     final_grid = process_data_to_picturelike_structure(final_array, grid_size, kernel_size,
-                                                                       intensity_limit)
+                                                                       intensity_limit, area_limit, int_area_switch)
                     # saving the picture
-                    np.save('/home/jan/Desktop/TryOut/ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
+                    np.save('/home/jan/Desktop/TryOut/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
                                                                                 cur_n_grid_y), final_grid)
                     img = Image.fromarray(final_grid)
                     img.save(
-                        '/home/jan/Desktop/TryOut/imgs/ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
+                        '/home/jan/Desktop/TryOut/imgs/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
                                                                                  cur_n_grid_y) + '.png')
 
 print('done with ZP{}'.format(ZP_number))
