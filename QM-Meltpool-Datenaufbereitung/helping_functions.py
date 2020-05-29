@@ -29,6 +29,7 @@ h5_path - (str) - path to relevant HDF5 file
 part_name - (str) - name of the relevant part of HDF5 File 
 slice_name - (str) - name of current Slice 
 intensity limit - (int) - maximum value for intensity filter 
+area_limit - (int) - maximum value for area filter 
 show_info - (bool) - Switch for showing processing information
  
 
@@ -37,7 +38,8 @@ return_array - (np.ndarray) - filtered array
 '''
 
 
-def getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name, slice_name, intensity_limit, show_info=False):
+def getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
+                                                    slice_name, intensity_limit, area_limit, show_info=False):
 
     # setting the start timer for time information
     start_time = time.time()
@@ -166,6 +168,10 @@ def getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name, slice_na
             for row in return_array:
                 if row[3] > intensity_limit:
                     row[3] = intensity_limit
+                # added block to filter out area outlier points
+                if row[2] > area_limit:
+                    row[2] = area_limit
+
         else:
             return_array = np.empty([0, 4], dtype=int)
             print('{} is not existing -> empty array created'.format(slice_name))
@@ -194,13 +200,13 @@ maxY - (int) - maximal y-value of all selected slices
 '''
 
 
-def get_min_max_values_xy_selected_slices(h5_path, part_name,  min_slice_num, max_slice_num, intensity_limit):
+def get_min_max_values_xy_selected_slices(h5_path, part_name,  min_slice_num, max_slice_num, intensity_limit, area_limit):
     df = pd.DataFrame(columns=['Slice_num', 'minX', 'maxX', 'minY', 'maxY', 'diameterX', 'diameterY'])
 
     # iterating over all slices in selected range
     for num_slice in range(min_slice_num, max_slice_num+1):
         slice_name = 'Slice' + str("{:05d}".format(num_slice))
-        array = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name, slice_name, intensity_limit)
+        array = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name, slice_name, intensity_limit, area_limit)
 
         # calculating minX, minY, maxX and maxY for every slice
         minX = array[:, 0].min()

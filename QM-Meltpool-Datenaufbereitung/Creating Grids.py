@@ -11,6 +11,7 @@ import numpy as np
 from PIL import Image
 
 
+area_limit = 1500
 intensity_limit = 1750
 kernel_size = 5
 n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
@@ -22,7 +23,8 @@ for ZP_number in range(1,10):
     part_name = 'ZP{}_combined'.format(ZP_number)
     max_slice = slice_numbers.at[ZP_number-1, 'maxSlice']
     min_slice = slice_numbers.at[ZP_number-1, 'minSlice']
-    minX, minY, maxX, maxY = get_min_max_values_xy_selected_slices(h5_path, part_name, min_slice_num = min_slice, max_slice_num = max_slice, intensity_limit= intensity_limit)
+    minX, minY, maxX, maxY = get_min_max_values_xy_selected_slices(h5_path, part_name, min_slice_num = min_slice,
+                                 max_slice_num = max_slice, intensity_limit= intensity_limit, area_limit = area_limit)
 
     length_x_part = maxX - minX
     length_y_part = maxY - minY
@@ -38,7 +40,8 @@ for ZP_number in range(1,10):
     for num_slice in range(min_slice, max_slice+1):
         print(num_slice)
         slice_name = 'Slice' + str("{:05d}".format(num_slice))
-        array_filtered_not_docked = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name, slice_name, intensity_limit, show_info=False)
+        array_filtered_not_docked = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
+                                                                slice_name, intensity_limit,area_limit, show_info=False)
         array_filtered_docked = dock_array_to_zero(array_filtered_not_docked, minX, minY)
 
         if Multilayer:
