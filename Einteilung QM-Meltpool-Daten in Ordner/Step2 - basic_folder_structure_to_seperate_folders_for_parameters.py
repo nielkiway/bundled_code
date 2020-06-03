@@ -35,21 +35,22 @@ import random
 from shutil import copyfile
 
 random_seed = 42
+num_layers = 3
 
 undersampling_switch = True  # can be triggered to enable undersampling
 
 # In the following section the folders need to be set. src_no_porosity is the folder filled in step 1 with all the data
 # belonging to class "no porosity". The other paths are the paths of the subfolders for the different parameters
-src_no_porosity = '/home/jan/Desktop/TryOut/no_porosity'
-dest_hatch_no_porosity = '/home/jan/Desktop/TryOut/generated_ds/hatch_reduced/no_porosity'
-dest_power_no_porosity = '/home/jan/Desktop/TryOut/generated_ds/power_reduced/no_porosity'
-dest_standard_no_porosity = '/home/jan/Desktop/TryOut/generated_ds/standard/no_porosity'
+src_no_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_porosity/{}_layer/no_porosity'.format(num_layers)
+dest_hatch_no_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_parameters/{}_layer/hatch_reduced/no_porosity'.format(num_layers)
+dest_power_no_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_parameters/{}_layer/power_reduced/no_porosity'.format(num_layers)
+dest_standard_no_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_parameters/{}_layer/standard/no_porosity'.format(num_layers)
 
 # The same procedure is repeated here for class "porosity".
-src_porosity = '/home/jan/Desktop/TryOut/porosity'
-dest_hatch_porosity = '/home/jan/Desktop/TryOut/generated_ds/hatch_reduced/porosity'
-dest_power_porosity = '/home/jan/Desktop/TryOut/generated_ds/power_reduced/porosity'
-dest_standard_porosity = '/home/jan/Desktop/TryOut/generated_ds/standard/porosity'
+src_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_porosity/{}_layer/porosity'.format(num_layers)
+dest_hatch_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_parameters/{}_layer/hatch_reduced/porosity'.format(num_layers)
+dest_power_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_parameters/{}_layer/power_reduced/porosity'.format(num_layers)
+dest_standard_porosity = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/datasets_new/arrays_sorted_for_parameters/{}_layer/standard/porosity'.format(num_layers)
 
 # empty lists are initialized to store all the file names of the arrays
 array_paths_porosity = []
@@ -66,8 +67,8 @@ standard_no_porosity = []
 
 # looping through all the file names of the no porosity arrays
 for path in array_paths_no_porosity:
-    zp_n = int(path[2])             # getting the number of the tensile test out of the file name
-    slice_n = int(path[10:14])      # getting the slice out of the file name
+    zp_n = int(path[7])             # getting the number of the tensile test out of the file name
+    slice_n = int(path[15:19])      # getting the slice out of the file name
 
     # - slices 854 to 864 are neglected as this is the region when the process was interrupted and had to be restarted
     # - tensile test 1,4 and 7 were build with reduced hatch distance from slice 776 to 875
@@ -100,8 +101,8 @@ power_reduced_porosity = []
 standard_porosity = []
 
 for path in array_paths_porosity:
-    zp_n = int(path[2])
-    slice_n = int(path[10:14])
+    zp_n = int(path[7])
+    slice_n = int(path[15:19])
 
     if zp_n in [1,4,7] and slice_n in range(776,876) and slice_n not in range(854,865): #876 instead of 875 because of range
         hatch_reduced_porosity.append(path)

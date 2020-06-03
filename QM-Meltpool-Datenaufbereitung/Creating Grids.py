@@ -13,15 +13,15 @@ from PIL import Image
 
 area_limit = 1500
 intensity_limit = 1750
-kernel_size = 5
+kernel_size = 5  # kernel size of the dilation kernel
 n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
-Multilayer = False  # needs to be switched to True if the surrounding layers should be added
+Multilayer = True  # needs to be switched to True if the surrounding layers should be added
 int_area_switch = 0   # 0 if area is selected; 1 if intensity is selected
 
 if int_area_switch == 0:
     mode = "area"
 elif int_area_switch == 1:
-    mode = "int"
+    mode = "inte"
 
 
 for ZP_number in range(1,10):
@@ -130,9 +130,9 @@ for ZP_number in range(1,10):
                             three_layer_data[i][j][0] = final_grid_below[i][j]
                             three_layer_data[i][j][1] = final_grid[i][j]
                             three_layer_data[i][j][2] = final_grid_above[i][j]
-                    np.save('/home/jan/Desktop/TryOut/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number,slice_name, cur_n_grid_x, cur_n_grid_y),three_layer_data)
+                    np.save('/home/jan/Documents/Diplomarbeit/Trainingsdaten/arrays_non_sorted/arrays/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number,slice_name, cur_n_grid_x, cur_n_grid_y),three_layer_data)
                     img = Image.fromarray(three_layer_data)
-                    img.save('/home/jan/Desktop/TryOut/imgs/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y) + '.png')
+                    img.save('/home/jan/Documents/Diplomarbeit/Trainingsdaten/arrays_non_sorted/imgs/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y) + '.png')
 
         else:
             for cur_n_grid_x in range(n_grid_x):
@@ -142,11 +142,12 @@ for ZP_number in range(1,10):
                     final_grid = process_data_to_picturelike_structure(final_array, grid_size, kernel_size,
                                                                        intensity_limit, area_limit, int_area_switch)
                     # saving the picture
-                    np.save('/home/jan/Desktop/TryOut/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
+                    np.save('/home/jan/Documents/Diplomarbeit/Trainingsdaten/arrays_non_sorted/arrays/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
                                                                                 cur_n_grid_y), final_grid)
                     img = Image.fromarray(final_grid)
                     img.save(
-                        '/home/jan/Desktop/TryOut/imgs/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
+                        '/home/jan/Documents/Diplomarbeit/Trainingsdaten/arrays_non_sorted/imgs/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x,
                                                                                  cur_n_grid_y) + '.png')
 
 print('done with ZP{}'.format(ZP_number))
+
