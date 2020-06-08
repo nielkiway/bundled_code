@@ -20,10 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e81efe2-cf01-4120-9f16-b84d61474cc5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Creating_Images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CNN_training/Training_from_Scratch.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../CNN_training/Training_from_Scratch.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Labelerstellung/ZP_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Labelerstellung/ZP_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Labelerstellung/labeling_squares.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Labelerstellung/labeling_squares.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slice_information.py" beforeDir="false" afterPath="$PROJECT_DIR$/slice_information.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untersuchungen_alternativer_Ansatz_RGB_Bilder-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Untersuchungen_alternativer_Ansatz_RGB_Bilder-checkpoint.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,26 +124,34 @@
       <screen x="67" y="0" width="1853" height="1200" />
     </state>
     <state x="743" y="357" width="424" height="484" key="FileChooserDialogImpl/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591353343218" />
-    <state width="1897" height="263" key="GridCell.Tab.0.bottom" timestamp="1591356642580">
-      <screen x="67" y="0" width="1853" height="1200" />
+    <state width="1830" height="263" key="GridCell.Tab.0.bottom" timestamp="1591363345720">
+      <screen x="0" y="1200" width="1920" height="1080" />
     </state>
+    <state width="1830" height="263" key="GridCell.Tab.0.bottom/0.1200.1920.1080/67.0.1853.1200@0.1200.1920.1080" timestamp="1591363345720" />
     <state width="1897" height="263" key="GridCell.Tab.0.bottom/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591356642580" />
     <state width="1830" height="224" key="GridCell.Tab.0.bottom/0.1200.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1591100150368" />
-    <state width="1897" height="263" key="GridCell.Tab.0.center" timestamp="1591356642579">
-      <screen x="67" y="0" width="1853" height="1200" />
+    <state width="1830" height="263" key="GridCell.Tab.0.center" timestamp="1591363345720">
+      <screen x="0" y="1200" width="1920" height="1080" />
     </state>
+    <state width="1830" height="263" key="GridCell.Tab.0.center/0.1200.1920.1080/67.0.1853.1200@0.1200.1920.1080" timestamp="1591363345720" />
     <state width="1897" height="263" key="GridCell.Tab.0.center/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591356642579" />
     <state width="1830" height="224" key="GridCell.Tab.0.center/0.1200.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1591100150368" />
-    <state width="1897" height="263" key="GridCell.Tab.0.left" timestamp="1591356642579">
-      <screen x="67" y="0" width="1853" height="1200" />
+    <state width="1830" height="263" key="GridCell.Tab.0.left" timestamp="1591363345720">
+      <screen x="0" y="1200" width="1920" height="1080" />
     </state>
+    <state width="1830" height="263" key="GridCell.Tab.0.left/0.1200.1920.1080/67.0.1853.1200@0.1200.1920.1080" timestamp="1591363345720" />
     <state width="1897" height="263" key="GridCell.Tab.0.left/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591356642579" />
     <state width="1830" height="224" key="GridCell.Tab.0.left/0.1200.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1591100150368" />
-    <state width="1897" height="263" key="GridCell.Tab.0.right" timestamp="1591356642579">
-      <screen x="67" y="0" width="1853" height="1200" />
+    <state width="1830" height="263" key="GridCell.Tab.0.right" timestamp="1591363345720">
+      <screen x="0" y="1200" width="1920" height="1080" />
     </state>
+    <state width="1830" height="263" key="GridCell.Tab.0.right/0.1200.1920.1080/67.0.1853.1200@0.1200.1920.1080" timestamp="1591363345720" />
     <state width="1897" height="263" key="GridCell.Tab.0.right/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591356642579" />
     <state width="1830" height="224" key="GridCell.Tab.0.right/0.1200.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1591100150368" />
+    <state x="764" y="1667" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591363148157">
+      <screen x="0" y="1200" width="1920" height="1080" />
+    </state>
+    <state x="764" y="1667" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1200.1920.1080/67.0.1853.1200@0.1200.1920.1080" timestamp="1591363148157" />
     <state x="232" y="1227" width="1531" height="1053" maximized="true" key="dock-window-1" timestamp="1590746955620">
       <screen x="0" y="1200" width="1920" height="1080" />
     </state>

@@ -20,16 +20,16 @@ save_ct_images = True
 
 # general settings
 threshold_binary = 120          # selected threshold used for creating binary images from greyscale images
-grid_size_in_bit = 440          # grid size in QM-Meltpool-Bit (derived from the Meltpool-Data processing)
+grid_size_in_bit = 880          # grid size in QM-Meltpool-Bit (derived from the Meltpool-Data processing)
 max_diameter_bit = 1748         # maximum diameter of the tensile tests used for the study in QM-Meltpool-Bit
 bit_µm_ratio = 0.252            # Bit/µm - the value was derived from pre investigations at IWU
-equivalent_pore_diameter = 150  # µm threshold calculation depends just on this value
-num_grid_x = 4                  # number of grids in x direction
-num_grid_y = 4                  # number of grids in y direction
+equivalent_pore_diameter = 100  # µm threshold calculation depends just on this value
+num_grid_x = 1                  # number of grids in x direction
+num_grid_y = 1                  # number of grids in y direction
 
 
 for number_zp in range(1,10):
-    #print(number_zp)
+    # print(number_zp)
     # getting the values form ZP_info belonging to the desired tensile test
     xmin_big_d = ZP_info[ZP_info.ZP == number_zp].xmin_big_d[number_zp-1]
     xmax_big_d = ZP_info[ZP_info.ZP == number_zp].xmax_big_d[number_zp-1]
@@ -65,9 +65,9 @@ for number_zp in range(1,10):
     print('threshold_porosity_abs: '+str(threshold_porosity_abs))
 
     # file paths - need to be adjusted due to desired locations
-    csv_file_path = '/home/jan/Desktop/TryOut/csv/ZP{}_corrected_threshold={}.csv'.format(number_zp, threshold_porosity_abs)
-    CT_cut_path_pores = '/home/jan/Desktop/TryOut/CT_imgs/porosity_imgs'
-    CT_cut_path_no_pores = '/home/jan/Desktop/TryOut/CT_imgs/no_porosity_imgs'
+    csv_file_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP{}_threshold={}.csv'.format(number_zp, threshold_porosity_abs)
+    CT_cut_path_pores = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/CT_imgs/porosity_imgs'
+    CT_cut_path_no_pores = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/CT_imgs/no_porosity_imgs'
 
 
     # sys.exit()  # just for debugging
