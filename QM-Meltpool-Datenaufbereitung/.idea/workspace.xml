@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e81efe2-cf01-4120-9f16-b84d61474cc5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Labelerstellung/ZP_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Labelerstellung/ZP_info.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Labelerstellung/labeling_squares.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Labelerstellung/labeling_squares.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Einteilung QM-Meltpool-Daten in Ordner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Einteilung QM-Meltpool-Daten in Ordner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Einteilung QM-Meltpool-Daten in Ordner/Step1 - csv_to_basic folder_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Einteilung QM-Meltpool-Daten in Ordner/Step1 - csv_to_basic folder_structure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untersuchungen_alternativer_Ansatz_RGB_Bilder-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/Untersuchungen_alternativer_Ansatz_RGB_Bilder-checkpoint.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
