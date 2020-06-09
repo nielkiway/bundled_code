@@ -17,9 +17,7 @@ import matplotlib.pyplot as plt
 
 area_limit = 1500
 intensity_limit = 1750
-kernel_size = 5  # kernel size of the dilation kernel
-n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
-Multilayer = True  # needs to be switched to True if the surrounding layers should be added
+#n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
 int_area_switch = 0   # 0 if area is selected; 1 if intensity is selected
 
 if int_area_switch == 0:
@@ -42,8 +40,9 @@ for ZP_number in range(1,10):
     length_x_part = maxX - minX
     length_y_part = maxY - minY
 
-    min_square = int(0.15 * length_x_part)
-    max_square = int(0.85 * length_x_part)
+    min_square = int(0.248 * length_x_part)
+    # 0.248 and 0.752 -> see book derived from pythagoras and ratio between big and small diameter
+    max_square = int(0.752 * length_x_part)
     # 0.15 and 0.85 are derived from pythagoras and sqrt of 2 when cutting the square out of the circle
 
     # just for tryout
@@ -51,7 +50,7 @@ for ZP_number in range(1,10):
     #max_square = 1260
 
     for num_slice in range(min_slice, max_slice+1):
-            print(num_slice)
+            print('ZP{} Slice:{}'.format(ZP_number, num_slice))
             slice_name = 'Slice' + str("{:05d}".format(num_slice))
             array_filtered_not_docked = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
                                                                     slice_name, intensity_limit,area_limit, show_info=False)
@@ -70,7 +69,7 @@ for ZP_number in range(1,10):
             cntr1 = plt.contourf(xi, yi, zi, levels=200, cmap="jet")
             plt.clim(0, area_limit)
             plt.axis('off')
-            plt.savefig('RGB_area_images/' + mode + '_ZP{}_{}'.format(ZP_number, slice_name) ,bbox_inches='tight', pad_inches=0)
+            plt.savefig('RGB_area_images_all_slices/' + mode + '_ZP{}_{}'.format(ZP_number, slice_name) ,bbox_inches='tight', pad_inches=0)
             plt.close()
 
 '''
