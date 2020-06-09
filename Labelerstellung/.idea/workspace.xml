@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f1cf464b-a410-4c62-9cfc-29f1d6376561" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Einteilung QM-Meltpool-Daten in Ordner/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Einteilung QM-Meltpool-Daten in Ordner/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1d2DtO1smYJGnHah9GOlEu6SBXP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/labeling_squares.py" />
+  </component>
+  <component name="RunManager">
+    <configuration name="labeling_squares" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Labelerstellung" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda3/envs/OpenCVpy3/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/labeling_squares.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1cf464b-a410-4c62-9cfc-29f1d6376561" name="Default Changelist" comment="" />
+      <created>1591614507237</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591614507237</updated>
+    </task>
+    <task id="LOCAL-00001" summary="altered version for dealing with whole slices">
+      <created>1591616177163</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591616177163</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="altered version for dealing with whole slices" />
+    <option name="LAST_COMMIT_MESSAGE" value="altered version for dealing with whole slices" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="418" y="257" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591615482231">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state x="418" y="257" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591615482231" />
+    <state x="499" y="147" width="912" height="904" key="CommitChangelistDialog2" timestamp="1591616177058">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state x="499" y="147" width="912" height="904" key="CommitChangelistDialog2/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591616177058" />
+    <state x="743" y="357" width="424" height="484" key="FileChooserDialogImpl" timestamp="1591615326194">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state x="743" y="357" width="424" height="484" key="FileChooserDialogImpl/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591615326194" />
+    <state width="1897" height="327" key="GridCell.Tab.0.bottom" timestamp="1591616227754">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state width="1897" height="327" key="GridCell.Tab.0.bottom/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591616227754" />
+    <state width="1897" height="327" key="GridCell.Tab.0.center" timestamp="1591616227754">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state width="1897" height="327" key="GridCell.Tab.0.center/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591616227754" />
+    <state width="1897" height="327" key="GridCell.Tab.0.left" timestamp="1591616227754">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state width="1897" height="327" key="GridCell.Tab.0.left/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591616227754" />
+    <state width="1897" height="327" key="GridCell.Tab.0.right" timestamp="1591616227754">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state width="1897" height="327" key="GridCell.Tab.0.right/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591616227754" />
+    <state x="731" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591616077144">
+      <screen x="67" y="0" width="1853" height="1200" />
+    </state>
+    <state x="731" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591616077144" />
+  </component>
+</project>
