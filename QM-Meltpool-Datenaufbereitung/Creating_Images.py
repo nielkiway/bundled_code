@@ -26,7 +26,7 @@ elif int_area_switch == 1:
     mode = "inte"
 
 
-for ZP_number in range(1,10):
+for ZP_number in range(3,10):
 
     # general calculations
     h5_path = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/ZPs/ZP{}/ZP_{}_full_part.h5'.format(ZP_number, ZP_number)

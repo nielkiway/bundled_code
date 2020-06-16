@@ -44,7 +44,6 @@ csv_dict = {'ZP': [1, 2, 3, 4, 5, 6, 7, 8, 9],
 csv_paths = pd.DataFrame(csv_dict)
 
 mode = 'area' # needs to be changed if intensity is selected
-num_layer = 3
 
 # Looping through all the tensile tests
 for ZP_number in range(1, 10):
@@ -53,17 +52,17 @@ for ZP_number in range(1, 10):
     csv_path = csv_paths[csv_paths['ZP'] == ZP_number].csv_path[ZP_number - 1]
     ZP_csv = pd.read_csv(csv_path)
 
-    images_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_area_images'
+    images_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/grayscale_area_images_all_slices'
 
     # setting the paths of the folders of the desired folder structure (see lines 7-11)
-    folder_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_area_images_sorted/porosity'
-    folder_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_area_images_sorted/no_porosity'
+    folder_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/grayscale_area_images_all_slices_sorted/porosity'
+    folder_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/grayscale_area_images_all_slices_sorted/no_porosity'
 
     # looping through all the rows of the DataFrame created from the csv
     for index, row in ZP_csv.iterrows():
         # print (index) # just for debugging purposes
         # getting the information of the DataFrame
-        num_slice = row['Slice']
+        num_slice = row['Slice']-1  # -1 added because indexing of the slices starts at 0
         x = row['x-grid']
         y = row['y-grid']
         pores = row['Poren']
