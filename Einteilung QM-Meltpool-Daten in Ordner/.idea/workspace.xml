@@ -6,8 +6,6 @@
       <change beforePath="$PROJECT_DIR$/Step1 - csv_to_basic_folder_structure_RGB_image_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/Step1 - csv_to_basic_folder_structure_RGB_image_version.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Step2  - basic_folder_structure_to_seperate_folders_for_parameters_RGB_image_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/Step2  - basic_folder_structure_to_seperate_folders_for_parameters_RGB_image_version.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/Creating_Images.py" beforeDir="false" afterPath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/Creating_Images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/Untersuchungen_alternativer_Ansatz_RGB_Bilder.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../QM-Meltpool-Datenaufbereitung/Untersuchungen_alternativer_Ansatz_RGB_Bilder.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,39 +97,39 @@
     <option name="LAST_COMMIT_MESSAGE" value="updated for Area data - with second version" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="231" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592210681657">
+    <state x="418" y="231" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592295683122">
       <screen x="67" y="0" width="1853" height="1080" />
     </state>
-    <state x="418" y="231" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592210681657" />
+    <state x="418" y="231" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592295683122" />
     <state x="418" y="257" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591781942304" />
     <state x="499" y="147" width="912" height="904" key="CommitChangelistDialog2" timestamp="1591625560473">
       <screen x="67" y="0" width="1853" height="1200" />
     </state>
     <state x="499" y="147" width="912" height="904" key="CommitChangelistDialog2/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591625560473" />
-    <state x="743" y="321" width="424" height="484" key="FileChooserDialogImpl" timestamp="1592210679168">
+    <state x="743" y="321" width="424" height="484" key="FileChooserDialogImpl" timestamp="1592295681934">
       <screen x="67" y="0" width="1853" height="1080" />
     </state>
-    <state x="743" y="321" width="424" height="484" key="FileChooserDialogImpl/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592210679168" />
+    <state x="743" y="321" width="424" height="484" key="FileChooserDialogImpl/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592295681934" />
     <state x="743" y="357" width="424" height="484" key="FileChooserDialogImpl/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591781928888" />
-    <state width="1897" height="287" key="GridCell.Tab.0.bottom" timestamp="1592210225006">
+    <state width="1897" height="287" key="GridCell.Tab.0.bottom" timestamp="1592301596498">
       <screen x="67" y="0" width="1853" height="1080" />
     </state>
-    <state width="1897" height="287" key="GridCell.Tab.0.bottom/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592210225006" />
+    <state width="1897" height="287" key="GridCell.Tab.0.bottom/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592301596498" />
     <state width="1897" height="327" key="GridCell.Tab.0.bottom/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591788680799" />
-    <state width="1897" height="287" key="GridCell.Tab.0.center" timestamp="1592210225006">
+    <state width="1897" height="287" key="GridCell.Tab.0.center" timestamp="1592301596498">
       <screen x="67" y="0" width="1853" height="1080" />
     </state>
-    <state width="1897" height="287" key="GridCell.Tab.0.center/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592210225006" />
+    <state width="1897" height="287" key="GridCell.Tab.0.center/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592301596498" />
     <state width="1897" height="327" key="GridCell.Tab.0.center/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591788680799" />
-    <state width="1897" height="287" key="GridCell.Tab.0.left" timestamp="1592210225005">
+    <state width="1897" height="287" key="GridCell.Tab.0.left" timestamp="1592301596498">
       <screen x="67" y="0" width="1853" height="1080" />
     </state>
-    <state width="1897" height="287" key="GridCell.Tab.0.left/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592210225005" />
+    <state width="1897" height="287" key="GridCell.Tab.0.left/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592301596498" />
     <state width="1897" height="327" key="GridCell.Tab.0.left/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591788680799" />
-    <state width="1897" height="287" key="GridCell.Tab.0.right" timestamp="1592210225006">
+    <state width="1897" height="287" key="GridCell.Tab.0.right" timestamp="1592301596498">
       <screen x="67" y="0" width="1853" height="1080" />
     </state>
-    <state width="1897" height="287" key="GridCell.Tab.0.right/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592210225006" />
+    <state width="1897" height="287" key="GridCell.Tab.0.right/0.1080.1920.1080/67.0.1853.1080@67.0.1853.1080" timestamp="1592301596498" />
     <state width="1897" height="327" key="GridCell.Tab.0.right/0.1200.1920.1080/67.0.1853.1200@67.0.1853.1200" timestamp="1591788680799" />
     <state x="731" y="514" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591182201282">
       <screen x="67" y="0" width="1853" height="1200" />

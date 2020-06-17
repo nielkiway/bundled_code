@@ -13,12 +13,17 @@ from scipy import ndimage
 from scipy.interpolate import griddata
 from matplotlib.pyplot import figure
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 area_limit = 1500
 intensity_limit = 1750
 #n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
 int_area_switch = 0   # 0 if area is selected; 1 if intensity is selected
+segmentation = 1
+n_grid_x = 2    # only needs to be specified if segmentation = 1
+n_grid_y = 2    # "--"
+
 
 if int_area_switch == 0:
     mode = "area"
@@ -26,7 +31,7 @@ elif int_area_switch == 1:
     mode = "inte"
 
 
-for ZP_number in range(3,10):
+for ZP_number in range(1,2):
 
     # general calculations
     h5_path = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/ZPs/ZP{}/ZP_{}_full_part.h5'.format(ZP_number, ZP_number)
@@ -36,7 +41,6 @@ for ZP_number in range(3,10):
     minX, minY, maxX, maxY = get_min_max_values_xy_selected_slices(h5_path, part_name, min_slice_num=min_slice,
                                                                    max_slice_num=max_slice, intensity_limit=intensity_limit,
                                                                    area_limit=area_limit)
-
     length_x_part = maxX - minX
     length_y_part = maxY - minY
 
@@ -44,33 +48,79 @@ for ZP_number in range(3,10):
     # 0.248 and 0.752 -> see book derived from pythagoras and ratio between big and small diameter
     max_square = int(0.752 * length_x_part)
     # 0.15 and 0.85 are derived from pythagoras and sqrt of 2 when cutting the square out of the circle
+    up = min_square + 0.5 * (max_square - min_square)
+    # value in between min_square and max_square
+
+    # pd-Dataframe storing the min and max values is created in this step
+    data = {'num_x': [0, 0, 1, 1], 'num_y': [0, 1, 0, 1], 'min_x': [min_square, min_square, up, up],
+            'max_x': [up, up, max_square, max_square], 'min_y': [up, min_square, up, min_square],
+            'max_y': [max_square, up, max_square, up]}
+    df = pd.DataFrame(data)
 
     # just for tryout
     #min_square = 0
     #max_square = 1260
 
     for num_slice in range(min_slice, max_slice+1):
-            print('ZP{} Slice:{}'.format(ZP_number, num_slice))
-            slice_name = 'Slice' + str("{:05d}".format(num_slice))
-            array_filtered_not_docked = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
-                                                                    slice_name, intensity_limit,area_limit, show_info=False)
-            array_filtered_docked = dock_array_to_zero(array_filtered_not_docked, minX, minY)
 
-            # creating the actual image
-            figure(num=None, figsize=(5, 5), dpi=200, facecolor='w', edgecolor='k')
+            if not segmentation:
+                print('ZP{} Slice:{}'.format(ZP_number, num_slice))
+                slice_name = 'Slice' + str("{:05d}".format(num_slice))
+                array_filtered_not_docked = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
+                                                                        slice_name, intensity_limit,area_limit, show_info=False)
+                array_filtered_docked = dock_array_to_zero(array_filtered_not_docked, minX, minY)
 
-            x = array_filtered_docked[:, 0]
-            y = array_filtered_docked[:, 1]
-            z = array_filtered_docked[:, 2]
+                # creating the actual image
+                figure(num=None, figsize=(5, 5), dpi=200, facecolor='w', edgecolor='k')
 
-            xi = np.linspace(min_square, max_square, 100)
-            yi = np.linspace(min_square, max_square, 100)
-            zi = griddata((x, y), z, (xi[None, :], yi[:, None]), method='linear')
-            cntr1 = plt.contourf(xi, yi, zi, levels=200, cmap="jet")
-            plt.clim(0, area_limit)
-            plt.axis('off')
-            plt.savefig('RGB_area_images_all_slices/' + mode + '_ZP{}_{}'.format(ZP_number, slice_name) ,bbox_inches='tight', pad_inches=0)
-            plt.close()
+                x = array_filtered_docked[:, 0]
+                y = array_filtered_docked[:, 1]
+                z = array_filtered_docked[:, 2]
+
+                xi = np.linspace(min_square, max_square, 100)
+                yi = np.linspace(min_square, max_square, 100)
+                zi = griddata((x, y), z, (xi[None, :], yi[:, None]), method='linear')
+                cntr1 = plt.contourf(xi, yi, zi, levels=200, cmap="jet")
+                plt.clim(0, area_limit)
+                plt.axis('off')
+                plt.savefig('RGB_area_images_all_slices/' + mode + '_ZP{}_{}'.format(ZP_number, slice_name) ,bbox_inches='tight', pad_inches=0)
+                plt.close()
+
+            else:
+                for cur_n_grid_x in range(n_grid_x):
+                    for cur_n_grid_y in range(n_grid_y):
+                        print('ZP{} Slice:{} numX:{} numY:{}'.format(ZP_number, num_slice,cur_n_grid_x, cur_n_grid_y))
+                        slice_name = 'Slice' + str("{:05d}".format(num_slice))
+                        array_filtered_not_docked = getting_2D_data_from_h5_filtered_np_xy_switched(h5_path, part_name,
+                                                                                                    slice_name,
+                                                                                                    intensity_limit,
+                                                                                                    area_limit,
+                                                                                                    show_info=False)
+                        array_filtered_docked = dock_array_to_zero(array_filtered_not_docked, minX, minY)
+
+                        # setting the correct min and maximum values for the cutout
+                        # the to numpy part is for transferring the pandas series to a single value which can be further processed
+                        min_x = df[(df['num_x'] == cur_n_grid_x) & (df['num_y'] == cur_n_grid_y)]["min_x"].to_numpy()[0]
+                        max_x = df[(df['num_x'] == cur_n_grid_x) & (df['num_y'] == cur_n_grid_y)]["max_x"].to_numpy()[0]
+                        min_y = df[(df['num_x'] == cur_n_grid_x) & (df['num_y'] == cur_n_grid_y)]["min_y"].to_numpy()[0]
+                        max_y = df[(df['num_x'] == cur_n_grid_x) & (df['num_y'] == cur_n_grid_y)]["max_y"].to_numpy()[0]
+
+                        # creating the actual image
+                        figure(num=None, figsize=(5, 5), dpi=200, facecolor='w', edgecolor='k')
+
+                        x = array_filtered_docked[:, 0]
+                        y = array_filtered_docked[:, 1]
+                        z = array_filtered_docked[:, 2]
+
+                        xi = np.linspace(min_x, max_x, 100)
+                        yi = np.linspace(min_y, max_y, 100)
+                        zi = griddata((x, y), z, (xi[None, :], yi[:, None]), method='linear')
+                        cntr1 = plt.contourf(xi, yi, zi, levels=200, cmap="jet")
+                        plt.clim(0, area_limit)
+                        plt.axis('off')
+                        plt.savefig('segmented_RGB_area/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y),
+                                    bbox_inches='tight', pad_inches=0)
+                        plt.close()
 
 '''
     # general calculations

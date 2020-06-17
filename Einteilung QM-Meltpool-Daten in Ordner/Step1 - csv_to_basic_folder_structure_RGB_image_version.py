@@ -52,11 +52,11 @@ for ZP_number in range(1, 10):
     csv_path = csv_paths[csv_paths['ZP'] == ZP_number].csv_path[ZP_number - 1]
     ZP_csv = pd.read_csv(csv_path)
 
-    images_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/grayscale_area_images_all_slices'
+    images_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/stacked_RGB'
 
     # setting the paths of the folders of the desired folder structure (see lines 7-11)
-    folder_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/grayscale_area_images_all_slices_sorted/porosity'
-    folder_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/grayscale_area_images_all_slices_sorted/no_porosity'
+    folder_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/stacked_RGB_sorted/porosity'
+    folder_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/stacked_RGB_sorted/no_porosity'
 
     # looping through all the rows of the DataFrame created from the csv
     for index, row in ZP_csv.iterrows():
