@@ -14,12 +14,13 @@ from scipy.interpolate import griddata
 from matplotlib.pyplot import figure
 import matplotlib.pyplot as plt
 import pandas as pd
+import concurrent.futures
 
 
 area_limit = 1500
 intensity_limit = 1750
 #n_grid_x, n_grid_y = 4, 4    # needs to be changed for different segmentation strategy
-int_area_switch = 0   # 0 if area is selected; 1 if intensity is selected
+int_area_switch = 1   # 0 if area is selected; 1 if intensity is selected
 segmentation = 1
 n_grid_x = 2    # only needs to be specified if segmentation = 1
 n_grid_y = 2    # "--"
@@ -31,7 +32,8 @@ elif int_area_switch == 1:
     mode = "inte"
 
 
-for ZP_number in range(1,10):
+def creating_img(ZP_number):
+#for ZP_number in range(1,10):
 
     # general calculations
     h5_path = '/home/jan/Documents/Diplomarbeit/Trainingsdaten/ZPs/ZP{}/ZP_{}_full_part.h5'.format(ZP_number, ZP_number)
@@ -75,16 +77,20 @@ for ZP_number in range(1,10):
 
                 x = array_filtered_docked[:, 0]
                 y = array_filtered_docked[:, 1]
-                z = array_filtered_docked[:, 2]
+                z = array_filtered_docked[:, 3]             # 3 is changed for intensity value
 
                 xi = np.linspace(min_square, max_square, 100)
                 yi = np.linspace(min_square, max_square, 100)
                 zi = griddata((x, y), z, (xi[None, :], yi[:, None]), method='linear')
                 cntr1 = plt.contourf(xi, yi, zi, levels=200, cmap="jet")
-                plt.clim(0, area_limit)
+                plt.clim(0, intensity_limit)                                           # plt.clim(0, area_limit)
                 plt.axis('off')
-                plt.savefig('RGB_area_images_all_slices/' + mode + '_ZP{}_{}'.format(ZP_number, slice_name) ,bbox_inches='tight', pad_inches=0)
+                plt.savefig('greyscale_intensity_images_all_slices/' + mode + '_ZP{}_{}'.format(ZP_number, slice_name) ,bbox_inches='tight', pad_inches=0)
                 plt.close()
+
+                # messy way of transforming to Greyscale with only one channel
+                img = Image.open('greyscale_intensity_images_all_slices/' + mode + '_ZP{}_{}.png'.format(ZP_number, slice_name)).convert('L')
+                img.save('greyscale_intensity_images_all_slices/' + mode + '_ZP{}_{}.png'.format(ZP_number, slice_name))
 
             else:
                 for cur_n_grid_x in range(n_grid_x):
@@ -110,17 +116,26 @@ for ZP_number in range(1,10):
 
                         x = array_filtered_docked[:, 0]
                         y = array_filtered_docked[:, 1]
-                        z = array_filtered_docked[:, 2]
+                        z = array_filtered_docked[:, 3]      # 3 is changed for intensity value
 
                         xi = np.linspace(min_x, max_x, 100)
                         yi = np.linspace(min_y, max_y, 100)
                         zi = griddata((x, y), z, (xi[None, :], yi[:, None]), method='linear')
                         cntr1 = plt.contourf(xi, yi, zi, levels=200, cmap="jet")
-                        plt.clim(0, area_limit)
+                        plt.clim(0, intensity_limit)
                         plt.axis('off')
-                        plt.savefig('segmented_RGB_area/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y),
+                        plt.savefig('greyscale_intensity_images_all_slices_segmented/' + mode + '_ZP{}_{}_x:{}_y:{}'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y),
                                     bbox_inches='tight', pad_inches=0)
                         plt.close()
+
+                        # messy way of transforming to Greyscale with only one channel
+                        img = Image.open('greyscale_intensity_images_all_slices_segmented/' + mode + '_ZP{}_{}_x:{}_y:{}.png'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y)).convert('L')
+                        img.save('greyscale_intensity_images_all_slices_segmented/' + mode + '_ZP{}_{}_x:{}_y:{}.png'.format(ZP_number, slice_name, cur_n_grid_x, cur_n_grid_y))
+
+
+with concurrent.futures.ProcessPoolExecutor(max_workers=6) as executor:
+    executor.map(creating_img, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
 
 '''
     # general calculations

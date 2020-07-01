@@ -15,22 +15,22 @@ main_folder
 
 import os
 import pandas as pd
-from shutil import copyfile
+from shutil import copyfile, move
 
 
 # Creating a DataFrame containing the paths to the csv files
 
 csv_dict = {'ZP': [1, 2, 3, 4, 5, 6, 7, 8, 9],
             'csv_path': [
-                '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP1_threshold=41.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP2_threshold=57.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP3_threshold=53.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP4_threshold=46.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP5_threshold=32.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP6_threshold=41.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP7_threshold=47.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP8_threshold=44.csv'
-                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/4grid_ZP9_threshold=35.csv'],
+                '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP1_threshold=41.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP2_threshold=57.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP3_threshold=53.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP4_threshold=46.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP5_threshold=32.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP6_threshold=41.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP7_threshold=47.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP8_threshold=44.csv'
+                , '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/Labelerstellung/csv_files/ZP9_threshold=35.csv'],
             }
 
 
@@ -43,7 +43,7 @@ csv_dict = {'ZP': [1, 2, 3, 4, 5, 6, 7, 8, 9],
 
 csv_paths = pd.DataFrame(csv_dict)
 
-mode = 'area' # needs to be changed if intensity is selected
+mode = 'inte' # needs to be changed if intensity is selected
 
 # Looping through all the tensile tests
 for ZP_number in range(1, 10):
@@ -52,11 +52,11 @@ for ZP_number in range(1, 10):
     csv_path = csv_paths[csv_paths['ZP'] == ZP_number].csv_path[ZP_number - 1]
     ZP_csv = pd.read_csv(csv_path)
 
-    images_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area'
+    images_path = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l'
 
     # setting the paths of the folders of the desired folder structure (see lines 7-11)
-    folder_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/porosity'
-    folder_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/no_porosity'
+    folder_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/porosity'
+    folder_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/no_porosity'
 
     # looping through all the rows of the DataFrame created from the csv
     for index, row in ZP_csv.iterrows():
@@ -68,7 +68,9 @@ for ZP_number in range(1, 10):
         pores = row['Poren']
 
         # creating the array- and image-filename corresponding to the current row of the DataFrame
-        src = images_path + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str("{:05d}".format(num_slice)) + '_x:{}'.format(x) + '_y:{}'.format(y) + '.png'
+        #src = images_path + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str("{:05d}".format(num_slice)) + '_x:{}'.format(x) + '_y:{}'.format(y) + '.png'
+        src = images_path + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str("{:05d}".format(num_slice)) + '.png'
+
 
         # checking whether the array-filename is existing - if not -> next row in DataFrame
         # The check is performed because not all the segments represented by the rows of the csv are arrays as only
@@ -77,15 +79,18 @@ for ZP_number in range(1, 10):
             # checking whether the segment is labeled as porous or not
             if pores == 0:
                 # setting the destination folder for the array
+                #dst = folder_no_porosity + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str(
+                #    "{:05d}".format(num_slice)) + '_x:{}'.format(x) + '_y:{}'.format(y) + '.png'
                 dst = folder_no_porosity + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str(
-                    "{:05d}".format(num_slice)) + '_x:{}'.format(x) + '_y:{}'.format(y) + '.png'
+                    "{:05d}".format(num_slice)) + '.png'
 
             elif pores == 1:
+                #dst = folder_porosity + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str(
+                #    "{:05d}".format(num_slice)) + '_x:{}'.format(x) + '_y:{}'.format(y) + '.png'
                 dst = folder_porosity + '/' + mode + '_ZP{}_'.format(ZP_number) + 'Slice' + str(
-                    "{:05d}".format(num_slice)) + '_x:{}'.format(x) + '_y:{}'.format(y) + '.png'
-
+                    "{:05d}".format(num_slice)) + '.png'
 
             # files are copied from the source folder to the desired folders
-            copyfile(src, dst)
+            move(src, dst)
 
 

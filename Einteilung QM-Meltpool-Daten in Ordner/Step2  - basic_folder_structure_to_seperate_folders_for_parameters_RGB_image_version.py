@@ -41,16 +41,16 @@ undersampling_switch = False  # can be triggered to enable undersampling
 
 # In the following section the folders need to be set. src_no_porosity is the folder filled in step 1 with all the data
 # belonging to class "no porosity". The other paths are the paths of the subfolders for the different parameters
-src_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/no_porosity'
-dest_hatch_no_porosity =  '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/hatch_reduced/no_porosity'
-dest_power_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/power_reduced/no_porosity'
-dest_standard_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/standard_orig/no_porosity'
+src_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/no_porosity'
+dest_hatch_no_porosity =  '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/hatch_reduced/no_porosity'
+dest_power_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/power_reduced/no_porosity'
+dest_standard_no_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/standard_orig/no_porosity'
 
 # The same procedure is repeated here for class "porosity".
-src_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/porosity'
-dest_hatch_porosity =  '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/hatch_reduced/porosity'
-dest_power_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/power_reduced/porosity'
-dest_standard_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/segmented_RGB_area_sorted/standard_orig/porosity'
+src_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/porosity'
+dest_hatch_porosity =  '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/hatch_reduced/porosity'
+dest_power_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/power_reduced/porosity'
+dest_standard_porosity = '/home/jan/Documents/Diplomarbeit/Code_zusammengefasst/QM-Meltpool-Datenaufbereitung/RGB_intensity_images_all_slices_3l_sorted/standard_orig/porosity'
 
 # empty lists are initialized to store all the file names of the arrays
 array_paths_porosity = []
